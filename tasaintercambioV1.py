@@ -1,9 +1,7 @@
-
 import requests
 from config import apiKey
 
 r = requests.get("https://rest.coinapi.io/v1/assets?apikey={}".format(apiKey))
-
 if r.status_code !=200:
     raise Exception("Error en consulta de assets: {}".format(r.status_code))
 
@@ -14,6 +12,8 @@ lista_definitiva=[]
 for candidata in lista_candidatas:
     if candidata["type_is_crypto"] == 1:
         lista_definitiva.append(candidata["asset_id"])
+
+
 
 
 cripto = input("Introduzca una cripto conocida: ").upper()
